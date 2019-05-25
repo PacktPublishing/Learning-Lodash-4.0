@@ -1,0 +1,37 @@
+{
+  "name": "recipes-client",
+  "version": "1.0.0",
+  "description": "The client-side for the recipes sample application.",
+  "main": "assets/js/app.js",
+  "scripts": {
+    "prebuild": "browserify -t stringify app/main.js -o assets/js/app.js",
+    "build": "uglifyjs assets/js/app.js -c -o assets/js/app.min.js",
+    "postbuild": "htmlprocessor index.html -o index.html",
+    "dev": "watchify -t stringify app/main.js -d -o assets/js/app.js -v",
+    "start": "static -p 9000 .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adamsea/recipes-client.git"
+  },
+  "author": "Eric Adams",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adamsea/recipes-client/issues"
+  },
+  "homepage": "https://github.com/adamsea/recipes-client#readme",
+  "dependencies": {
+    "es6-promise": "^3.0.2",
+    "lodash": "^4.2.1",
+    "lodash-migrate": "^0.2.4",
+    "picomodal": "^2.3.0",
+    "whatwg-fetch": "^0.10.1"
+  },
+  "devDependencies": {
+    "browserify": "^13.0.0",
+    "htmlprocessor": "^0.2.0",
+    "stringify": "^3.1.0",
+    "uglify-js": "^2.6.1"
+  }
+}
